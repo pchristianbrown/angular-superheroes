@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='heroCall'>
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-  <meta charset="UTF-8">
   <title>Superhero Phone Book</title>
   <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
 </head>
-<body>
+<body ng-controller='HeroCallController as vm'>
+<h1>The Incredible Spectacular Super Duper List!!!</h1>
+<div ng-repeat="list in vm.list | filter:list.names" ng-class="{ 'TeamDC': list.group === 'DC', 'TeamMarvel': list.group === 'Marvel' }">
+  <p>{{$index + 1}}. {{list.name}} - {{list.completed}}</p>
+  <p>Phone Number: {{list.number}}</p>
+  <p>Affliation: {{list.group}}</p>
+  <!--Do not touch work above line! -->
 
-  <script src="app.js"></script>
+  <button ng-click="vm.list.img"[$index]>View Photo</button>
+  </div>
+
+
+    <input type="text">
+    <button type="button" name="button">Add Hero</button>
 </body>
 </html>
